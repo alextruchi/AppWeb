@@ -216,6 +216,29 @@
     </form>
     <ul id="lista-tareas">
     </ul>
+    <script>
+      var listaTareas = document.getElementById("lista-tareas");
+      var formTarea = document.getElementById("form-tarea");
+      var inputTarea = document.getElementById("input-tarea");
+
+      formTarea.addEventListener("submit", function(event) {
+        event.preventDefault();
+        agregarTarea();
+      });
+
+      function agregarTarea() {
+        var tarea = inputTarea.value;
+        if (tarea !== "") {
+          var li = document.createElement("li");
+          li.textContent = tarea;
+          li.addEventListener("click", function() {
+            this.classList.toggle("completed");
+          });
+          listaTareas.appendChild(li);
+          inputTarea.value = "";
+        }
+      }
+    </script>
     </div>
   </main>
 
