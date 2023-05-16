@@ -246,8 +246,12 @@
       }
     });
 
+    var fechaInput = document.createElement("input");
+    fechaInput.type = "date";
+
     li.appendChild(completadoCheckbox);
     li.appendChild(tareaSpan);
+    li.appendChild(fechaInput);
     listaTareas.appendChild(li);
     inputTarea.value = "";
   }
