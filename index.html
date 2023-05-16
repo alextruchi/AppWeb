@@ -227,17 +227,31 @@
       });
 
       function agregarTarea() {
-        var tarea = inputTarea.value;
-        if (tarea !== "") {
-          var li = document.createElement("li");
-          li.textContent = tarea;
-          li.addEventListener("click", function() {
-            this.classList.toggle("completed");
-          });
-          listaTareas.appendChild(li);
-          inputTarea.value = "";
-        }
+  var tarea = inputTarea.value;
+  if (tarea !== "") {
+    var li = document.createElement("li");
+    var tareaSpan = document.createElement("span");
+    tareaSpan.textContent = tarea;
+    tareaSpan.addEventListener("click", function() {
+      this.parentNode.classList.toggle("completed");
+    });
+
+    var completadoCheckbox = document.createElement("input");
+    completadoCheckbox.type = "checkbox";
+    completadoCheckbox.addEventListener("change", function() {
+      if (this.checked) {
+        this.parentNode.classList.add("completed");
+      } else {
+        this.parentNode.classList.remove("completed");
       }
+    });
+
+    li.appendChild(completadoCheckbox);
+    li.appendChild(tareaSpan);
+    listaTareas.appendChild(li);
+    inputTarea.value = "";
+  }
+}
     </script>
     </div>
   </main>
